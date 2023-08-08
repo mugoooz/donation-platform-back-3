@@ -1,5 +1,6 @@
 class DonorsController < ApplicationController
 
+
     def index
         @donors = Donor.all
     end
@@ -53,3 +54,4 @@ class DonorsController < ApplicationController
     end
    
 end
+

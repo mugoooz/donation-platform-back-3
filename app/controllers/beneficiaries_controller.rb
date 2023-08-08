@@ -1,5 +1,6 @@
 class BeneficiariesController < ApplicationController
 
+
     def index
         @beneficiaries = Beneficiary.all
     end
@@ -46,3 +47,4 @@ class BeneficiariesController < ApplicationController
         params.require(:beneficiary).permit(:charity_id, :need, :phone_number)
     end
 end
+

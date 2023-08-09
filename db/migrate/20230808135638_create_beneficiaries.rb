@@ -6,9 +6,8 @@ class CreateBeneficiaries < ActiveRecord::Migration[7.0]
       t.string :need
       t.string :phone_number
 
-
-
       t.timestamps
+     end
     end
   end
 

@@ -12,8 +12,8 @@ class CreateDonations < ActiveRecord::Migration[7.0]
       t.string :recurrence
       t.string :stripe_session_id
 
-
       t.timestamps
+     end
     end
   end
 

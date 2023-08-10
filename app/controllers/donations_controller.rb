@@ -1,5 +1,6 @@
 class DonationsController < ApplicationController
 
+
     def index
         @donations = Donation.all
     end
@@ -46,3 +47,4 @@ class DonationsController < ApplicationController
         params.require(:donation).permit(:charity_id, :donor_id, :amount, :name, :location, :phone_number, :anonymous)
     end
 end
+

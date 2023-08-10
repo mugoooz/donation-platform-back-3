@@ -25,15 +25,6 @@ class DonorsController < ApplicationController
       end
     end
   
-    def create
-      donor = Donor.new(donor_params)
-      if donor.save
-        render json: donor, status: :created
-      else
-        render json: { errors: donor.errors.full_messages }, status: :unprocessable_entity
-      end
-    end
-  
     def update
       donor = Donor.find_by(id: params[:id])
       if donor

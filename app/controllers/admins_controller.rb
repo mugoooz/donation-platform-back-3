@@ -13,22 +13,14 @@ class AdminsController < ApplicationController
         render json: { error: "Admin not found" }, status: :not_found
       end
     end
-  
+
+
     def signup
       admin = Admin.new(admin_params)
   
       if admin.save
-        token = encode_token(admin.id, admin.email)
+        token = encode_token(admin.id, admin.email, 'admin')
         render json: { admin: admin, token: token }, status: :created
-      else
-        render json: { errors: admin.errors.full_messages }, status: :unprocessable_entity
-      end
-    end
-  
-    def create
-      admin = Admin.new(admin_params)
-      if admin.save
-        render json: admin, status: :created
       else
         render json: { errors: admin.errors.full_messages }, status: :unprocessable_entity
       end

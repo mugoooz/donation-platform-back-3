@@ -14,21 +14,13 @@ class CharitiesController < ApplicationController
       end
     end
   
+    
     def signup
       charity = Charity.new(charity_params)
   
       if charity.save
-        token = encode_token(charity.id, charity.email)
+        token = encode_token(charity.id, charity.email, 'charity')
         render json: { charity: charity, token: token }, status: :created
-      else
-        render json: { errors: charity.errors.full_messages }, status: :unprocessable_entity
-      end
-    end
-  
-    def create
-      charity = Charity.new(charity_params)
-      if charity.save
-        render json: charity, status: :created
       else
         render json: { errors: charity.errors.full_messages }, status: :unprocessable_entity
       end

@@ -49,12 +49,13 @@ class AdminsController < ApplicationController
     def login
       admin = Admin.find_by(email: admin_params[:email])
       if admin && admin.authenticate(admin_params[:password])
-        token = encode_token(admin.id, admin.email)
+        token = encode_token(admin.id, admin.email, 'admin')
         render json: { admin: admin, token: token }, status: :ok
       else
         render json: { error: 'Invalid email or password' }, status: :unauthorized
       end
     end
+    
   
     def logout
       remove_admin
@@ -64,6 +65,6 @@ class AdminsController < ApplicationController
     private
   
     def admin_params
-      params.require(:admin).permit(:username, :password)
+      params.require(:admin).permit(:username, :email, :password)
     end
 end

@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  get '/login', to: 'sessions#new'      # To display the login form
+  post '/login', to: 'sessions#create'  # To handle the form submission
 end

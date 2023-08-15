@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_08_135710) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_15_210056) do
   create_table "admins", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
@@ -36,17 +36,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_135710) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
+    t.string "hosted_button_id"
+    t.text "image"
   end
 
   create_table "donations", force: :cascade do |t|
-    t.string "charity"
-    t.string "donor"
+    t.integer "charity_id"
+    t.integer "donor_id"
     t.decimal "amount"
     t.string "name"
     t.string "location"
     t.string "phone_number"
     t.boolean "anonymous"
     t.string "recurrence"
+    t.string "stripe_session_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
